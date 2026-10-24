@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ seo.title }}</title>
+  <meta name="description" content="{{ seo.meta_description }}" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  {% if seo.schema_json %}
+  <script type="application/ld+json">
+  {{ seo.schema_json | safe }}
+  </script>
+  {% endif %}
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased">
+  <!-- Top Bar -->
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-30">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="/" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 transition">
+          ← Back to Interactive Hub
+        </a>
+        <span class="text-xs px-2.5 py-1 rounded-full bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 font-mono uppercase">
+          Programmatic SEO Landing Page • {{ seo.vertical }}
+        </span>
+      </div>
+      <a href="/sitemap.xml" target="_blank" class="text-xs text-slate-400 hover:text-emerald-400 font-mono">
+        /sitemap.xml ↗
+      </a>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 py-10">
+    {% if seo.page_type == "compatibility" %}
+      <!-- COMPATIBILITY SEO PAGE -->
+      <div class="bg-gradient-to-br from-slate-900 to-slate-900/50 border border-slate-800 rounded-2xl p-6 md:p-8 mb-8">
+        <div class="flex flex-wrap items-center gap-2 mb-3">
+          {% if seo.can_run %}
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+              ✅ VERIFIED COMPATIBLE ({{ seo.runtime_hours }} HRS RUNTIME)
+            </span>
+          {% else %}
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-rose-500/15 text-rose-400 border border-rose-500/30">
+              ⚠️ INVERTER OVERLOAD WARNING
+            </span>
+          {% endif %}
+          <span class="text-xs text-slate-400 font-mono">Updated {{ seo.station.last_updated }}</span>
+        </div>
+
+        <h1 class="text-2xl md:text-4xl font-extrabold text-white tracking-tight mb-4">
+          {{ seo.title }}
+        </h1>
+        <p class="text-slate-300 text-base leading-relaxed mb-6">
+          {{ seo.meta_description }}
+        </p>
+
+        <!-- Key Engineering Math Cards -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4">
+            <div class="text-xs text-slate-400 mb-1">Estimated Runtime</div>
+            <div class="text-2xl font-extrabold text-emerald-400">{{ seo.runtime_hours }} hrs</div>
+            <div class="text-[11px] text-slate-500 mt-1">@ {{ (seo.appliance.duty_cycle_pct * 100)|int }}% duty cycle ({{ seo.effective_watts }}W avg)</div>
+          </div>
+          <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4">
+            <div class="text-xs text-slate-400 mb-1">Usable Battery Capacity</div>
+            <div class="text-2xl font-extrabold text-white">{{ seo.usable_wh }} Wh</div>
+            <div class="text-[11px] text-slate-500 mt-1">{{ seo.station.capacity_wh }}Wh rated (85% AC eff.)</div>
+          </div>
+          <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4">
+            <div class="text-xs text-slate-400 mb-1">Surge Headroom</div>
+            <div class="text-2xl font-extrabold text-indigo-400">{{ seo.station.surge_w }}W</div>
+            <div class="text-[11px] text-slate-500 mt-1">Appliance Surge: {{ seo.appliance.surge_watts }}W</div>
+          </div>
+          <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4">
+            <div class="text-xs text-slate-400 mb-1">Recommended Solar Array</div>
+            <div class="text-2xl font-extrabold text-amber-400">{{ seo.solar_panels_needed_w }}W</div>
+            <div class="text-[11px] text-slate-500 mt-1">For {{ seo.daily_wh_needed }}Wh/day off-grid</div>
+          </div>
+        </div>
+
+        <!-- Primary Affiliate Callout Box -->
+        <div class="bg-emerald-950/30 border border-emerald-500/40 rounded-xl p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div>
+            <div class="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+              Live Deal Tracker • ${{ seo.dollar_per_wh }}/Wh ({{ seo.station.chemistry }} • {{ seo.station.cycle_life }} Cycles)
+            </div>
+            <div class="text-xl font-bold text-white">
+              {{ seo.station.name }} — <span class="text-emerald-400">${{ seo.station.live_price_usd|int }}</span>
+              <span class="text-sm text-slate-500 line-through ml-1">${{ seo.station.msrp_usd|int }} MSRP</span>
+            </div>
+            <div class="text-xs text-slate-400 mt-1">
+              Includes {{ seo.station.ups_ms }}ms UPS auto-switchover & {{ seo.station.solar_input_w }}W max solar MPPT input.
+            </div>
+          </div>
+          <a href="/go/wattwise/{{ seo.station.slug }}?source=seo_can_run_{{ seo.appliance.slug }}"
+             class="shrink-0 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-6 py-3.5 rounded-xl shadow-lg transition">
+            Check Live Price & Availability ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Structured FAQ Section (Matches JSON-LD Schema) -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 md:p-8 mb-8">
+        <h2 class="text-xl font-bold text-white mb-4">Engineering Breakdown & Frequently Asked Questions</h2>
+        <div class="space-y-4">
+          {% for f in seo.faqs %}
+          <div class="bg-slate-950/70 border border-slate-800/80 rounded-xl p-4">
+            <h3 class="font-semibold text-white mb-1">{{ f.q }}</h3>
+            <p class="text-sm text-slate-300 leading-relaxed">{{ f.a }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Alternative Power Stations -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 md:p-8">
+        <h2 class="text-lg font-bold text-white mb-4">Compare Alternative Power Stations for {{ seo.appliance.name }}</h2>
+        <div class="grid md:grid-cols-3 gap-4">
+          {% for alt in seo.alternatives %}
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
+            <div>
+              <div class="text-xs text-indigo-400 font-semibold">{{ alt.brand }} • {{ alt.capacity_wh }}Wh</div>
+              <div class="font-bold text-white mt-0.5">{{ alt.name }}</div>
+              <div class="text-xs text-slate-400 mt-2">
+                Est. Runtime: <strong class="text-emerald-400">{{ ((alt.capacity_wh * 0.85) / seo.effective_watts)|round(1) }} hrs</strong>
+              </div>
+              <div class="text-sm font-bold text-white mt-1">${{ alt.live_price_usd|int }}</div>
+            </div>
+            <div class="mt-4 flex gap-2">
+              <a href="/go/wattwise/{{ alt.slug }}?source=seo_alt" class="flex-1 text-center text-xs bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/30 font-semibold py-2 rounded-lg">
+                View Deal ↗
+              </a>
+              <a href="/seo/can-{{ alt.slug }}-run-{{ seo.appliance.slug }}" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-2 rounded-lg">
+                Math →
+              </a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+    {% else %}
+      <!-- HEAD-TO-HEAD VERSUS SEO PAGE -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 md:p-8 mb-8">
+        <div class="text-xs font-bold uppercase tracking-wider text-indigo-400 mb-2">
+          Head-to-Head Spec & Unit Economics Comparison
+        </div>
+        <h1 class="text-2xl md:text-4xl font-extrabold text-white mb-3">{{ seo.title }}</h1>
+        <p class="text-slate-300 text-sm md:text-base mb-6">{{ seo.meta_description }}</p>
+
+        <!-- Winner Banner -->
+        <div class="bg-emerald-950/30 border border-emerald-500/40 rounded-xl p-5 mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div>
+            <span class="text-xs font-bold uppercase px-2.5 py-0.5 rounded bg-emerald-500 text-slate-950">Best Unit Economics Winner</span>
+            <h2 class="text-xl font-bold text-white mt-2">{{ seo.winner.name }}</h2>
+            <p class="text-xs text-slate-300 mt-1">Wins on cost-efficiency and verified performance metrics in our automated benchmark index.</p>
+          </div>
+          <a href="/go/{{ seo.vertical }}/{{ seo.winner.slug }}?source=seo_vs_winner"
+             class="shrink-0 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-5 py-3 rounded-xl transition">
+            Get Best Deal on {{ seo.winner.name }} ↗
+          </a>
+        </div>
+
+        <!-- Comparison Table -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b border-slate-800 text-xs uppercase text-slate-400">
+                <th class="py-3 px-4">Metric / Specification</th>
+                <th class="py-3 px-4 text-white font-bold">{{ seo.item_a.name }}</th>
+                <th class="py-3 px-4 text-white font-bold">{{ seo.item_b.name }}</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800/70 text-sm">
+              {% for label, val_a, val_b in seo.metrics %}
+              <tr class="hover:bg-slate-950/50">
+                <td class="py-3.5 px-4 text-slate-400 font-medium">{{ label }}</td>
+                <td class="py-3.5 px-4 font-semibold text-emerald-300">{{ val_a }}</td>
+                <td class="py-3.5 px-4 font-semibold text-indigo-300">{{ val_b }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 mt-8">
+          <a href="/go/{{ seo.vertical }}/{{ seo.item_a.slug }}?source=seo_vs_table"
+             class="text-center bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-3.5 px-4 rounded-xl transition">
+            Check {{ seo.item_a.name }} Official Offer ↗
+          </a>
+          <a href="/go/{{ seo.vertical }}/{{ seo.item_b.slug }}?source=seo_vs_table"
+             class="text-center bg-indigo-500 hover:bg-indigo-400 text-white font-bold py-3.5 px-4 rounded-xl transition">
+            Check {{ seo.item_b.name }} Official Offer ↗
+          </a>
+        </div>
+      </div>
+    {% endif %}
+  </main>
+</body>
+</html>

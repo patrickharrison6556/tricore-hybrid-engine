@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TriCore Hybrid Income Engine — Programmatic SEO + Affiliate + Micro-SaaS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #090d16; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #334155; }
+    @media print {
+      .no-print { display: none !important; }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased selection:bg-emerald-500 selection:text-slate-950">
+
+  <!-- TOP TELEMETRY & NAVIGATION HEADER -->
+  <header class="border-b border-slate-800/90 bg-slate-900/85 backdrop-blur sticky top-0 z-40 no-print">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-indigo-600 flex items-center justify-center font-black text-slate-950 text-lg shadow-lg shadow-emerald-500/10">
+          3×
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-extrabold text-white tracking-tight text-lg">TriCore Hybrid Engine</span>
+            <span class="text-[11px] font-mono uppercase px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+              Live Portfolio v2.6
+            </span>
+          </div>
+          <p class="text-xs text-slate-400">Programmatic SEO Calculators + High-Ticket Affiliates + Micro-SaaS</p>
+        </div>
+      </div>
+
+      <!-- Live Telemetry Bar -->
+      <div class="flex flex-wrap items-center gap-2 md:gap-3">
+        <div class="bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-xs">
+          <span class="text-slate-400">SEO Pages:</span>
+          <strong id="stat-seo-pages" class="text-indigo-400 ml-1">155</strong>
+        </div>
+        <div class="bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-xs">
+          <span class="text-slate-400">Affiliate Clicks:</span>
+          <strong id="stat-clicks" class="text-emerald-400 ml-1">0</strong>
+        </div>
+        <div class="bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-xs">
+          <span class="text-slate-400">Logged EPC Value:</span>
+          <strong id="stat-epc" class="text-emerald-300 ml-1">$0.00</strong>
+        </div>
+        <button onclick="triggerPriceSync()" id="btn-sync" class="text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3 py-2 rounded-lg transition flex items-center gap-1.5">
+          <span>🔄</span> <span id="btn-sync-text">Sync Live Prices</span>
+        </button>
+        <button onclick="openProModal('All-Access Pro Watchdog & BOM Suite')" class="text-xs font-bold bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 px-3.5 py-2 rounded-lg shadow transition">
+          ⚡ Upgrade Pro (<span id="header-pro-price">$19</span>/mo)
+        </button>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="max-w-7xl mx-auto px-4 flex overflow-x-auto border-t border-slate-800/60 gap-1 pt-1">
+      <button onclick="switchTab('wattwise')" id="tab-btn-wattwise" class="tab-btn px-4 py-2.5 text-xs md:text-sm font-bold border-b-2 border-emerald-400 text-emerald-400 whitespace-nowrap transition">
+        ⚡ 1. WattWise (Solar & Power Sizing)
+      </button>
+      <button onclick="switchTab('sellerpulse')" id="tab-btn-sellerpulse" class="tab-btn px-4 py-2.5 text-xs md:text-sm font-semibold border-b-2 border-transparent text-slate-400 hover:text-slate-200 whitespace-nowrap transition">
+        🛍️ 2. SellerPulse (E-Com Profit + AI Store Spy SaaS)
+      </button>
+      <button onclick="switchTab('tokenindex')" id="tab-btn-tokenindex" class="tab-btn px-4 py-2.5 text-xs md:text-sm font-semibold border-b-2 border-transparent text-slate-400 hover:text-slate-200 whitespace-nowrap transition">
+        🧠 3. TokenIndex (AI API & Cloud GPU Index)
+      </button>
+      <button onclick="switchTab('seo')" id="tab-btn-seo" class="tab-btn px-4 py-2.5 text-xs md:text-sm font-semibold border-b-2 border-transparent text-slate-400 hover:text-slate-200 whitespace-nowrap transition">
+        🌐 Programmatic SEO Factory (<span id="nav-seo-count">155</span> Pages)
+      </button>
+      <button onclick="switchTab('admin')" id="tab-btn-admin" class="tab-btn px-4 py-2.5 text-xs md:text-sm font-semibold border-b-2 border-transparent text-amber-400/90 hover:text-amber-300 whitespace-nowrap transition ml-auto">
+        🎛️ Unified Command Center (Admin)
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 py-8">
+
+    <!-- =====================================================================
+         TAB 1: WATTWISE — OFF-GRID SOLAR & POWER STATION SIZING ENGINE
+         ===================================================================== -->
+    <section id="tab-wattwise" class="tab-panel space-y-8">
+      <!-- Hero Banner -->
+      <div class="bg-gradient-to-r from-slate-900 via-emerald-950/30 to-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div>
+          <div class="inline-flex items-center gap-2 text-xs font-mono uppercase text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-1 rounded-full mb-2">
+            Vertical #1 • High-Ticket Hardware Affiliate ($50–$300/Sale) + Pro BOM Builder
+          </div>
+          <h1 class="text-2xl md:text-3xl font-extrabold text-white">
+            WattWise™ Interactive Power Station & Solar Sizing Engine
+          </h1>
+          <p class="text-slate-400 text-sm mt-1 max-w-3xl">
+            Select the appliances you need to run during a blackout, RV trip, or off-grid build. Our engine calculates exact continuous watts, compressor surge headroom, LiFePO4 battery capacity, and ranks live deals by <strong>$/Wh</strong>.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2 shrink-0">
+          <button onclick="window.print()" class="text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-4 py-2.5 rounded-xl transition">
+            🖨️ Export Spec Sheet / BOM
+          </button>
+          <button onclick="openProModal('WattWise $/Wh Deal Drop Watchdog')" class="text-xs font-bold bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-4 py-2.5 rounded-xl transition">
+            🔔 Set $/Wh Price Drop Alert
+          </button>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-8">
+        <!-- Left Column: Interactive Appliance Selector (5 cols) -->
+        <div class="lg:col-span-5 bg-slate-900 border border-slate-800 rounded-2xl p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-lg font-bold text-white">1. Select Your Appliances</h2>
+            <button onclick="resetWattWiseAppliances()" class="text-xs text-slate-400 hover:text-emerald-400">Reset Default</button>
+          </div>
+          <p class="text-xs text-slate-400 mb-4">
+            Click appliances to add/remove them from your load profile and adjust daily runtime hours:
+          </p>
+
+          <div id="appliance-list" class="space-y-2.5 max-h-[460px] overflow-y-auto pr-1"></div>
+
+          <!-- Environment Sliders -->
+          <div class="mt-6 pt-5 border-t border-slate-800 space-y-4">
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span class="text-slate-300 font-medium">Days of Autonomy / Blackout Buffer:</span>
+                <strong id="ww-days-label" class="text-emerald-400">1.0 Day</strong>
+              </div>
+              <input id="ww-days" type="range" min="0.5" max="3.0" step="0.5" value="1.0" oninput="recalcWattWise()" class="w-full accent-emerald-500" />
+            </div>
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span class="text-slate-300 font-medium">Peak Sun Hours (for Solar Recharge):</span>
+                <strong id="ww-sun-label" class="text-amber-400">4.5 hrs/day</strong>
+              </div>
+              <input id="ww-sun" type="range" min="2.5" max="7.0" step="0.5" value="4.5" oninput="recalcWattWise()" class="w-full accent-amber-400" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Live Engineering Math & Matched Power Stations (7 cols) -->
+        <div class="lg:col-span-7 space-y-6">
+          <!-- Engineering Output KPIs -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4">
+              <div class="text-xs text-slate-400">Daily Energy Load</div>
+              <div id="ww-daily-wh" class="text-2xl font-black text-white mt-1">0 Wh</div>
+              <div class="text-[11px] text-slate-500 mt-0.5">Duty-cycle adjusted</div>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4">
+              <div class="text-xs text-slate-400">Min Battery Capacity</div>
+              <div id="ww-req-wh" class="text-2xl font-black text-emerald-400 mt-1">0 Wh</div>
+              <div class="text-[11px] text-slate-500 mt-0.5">Includes 85% AC inverter eff.</div>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4">
+              <div class="text-xs text-slate-400">Peak Surge Required</div>
+              <div id="ww-req-surge" class="text-2xl font-black text-indigo-400 mt-1">0 W</div>
+              <div class="text-[11px] id="ww-cont-watts" text-slate-500 mt-0.5">Continuous load check</div>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4">
+              <div class="text-xs text-slate-400">Recommended Solar</div>
+              <div id="ww-req-solar" class="text-2xl font-black text-amber-400 mt-1">0 W</div>
+              <div class="text-[11px] text-slate-500 mt-0.5">For 100% daily recharge</div>
+            </div>
+          </div>
+
+          <!-- Ranked Power Station Recommendations -->
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <div>
+                <h2 class="text-lg font-bold text-white">2. Best-Value Power Stations Ranked by $/Wh</h2>
+                <p class="text-xs text-slate-400">Automatically filtered & scored against your exact appliance load</p>
+              </div>
+              <span class="text-xs font-mono px-2.5 py-1 rounded bg-slate-950 border border-slate-800 text-emerald-400">
+                Owner View: Est. Commission Shown
+              </span>
+            </div>
+
+            <div id="station-recommendations" class="space-y-4"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         TAB 2: SELLERPULSE — E-COMMERCE PROFIT + AI STORE SPY SAAS
+         ===================================================================== -->
+    <section id="tab-sellerpulse" class="tab-panel hidden space-y-8">
+      <div class="bg-gradient-to-r from-slate-900 via-indigo-950/30 to-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div>
+          <div class="inline-flex items-center gap-2 text-xs font-mono uppercase text-indigo-400 bg-indigo-500/10 border border-indigo-500/30 px-2.5 py-1 rounded-full mb-2">
+            Vertical #2 • E-Com Software Affiliates ($50–$150 Bounty + 30% Recurring) + AI SaaS
+          </div>
+          <h1 class="text-2xl md:text-3xl font-extrabold text-white">
+            SellerPulse™ Cross-Platform Profit Engine & AI Store Spy
+          </h1>
+          <p class="text-slate-400 text-sm mt-1 max-w-3xl">
+            Compare real take-home margins across Shopify, TikTok Shop, Etsy, and Amazon FBA—then use our <strong>AI Store Spy & Listing Generator</strong> to turn any competitor store URL or product brief into a ready-to-import Shopify CSV and viral ad scripts.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-8">
+        <!-- Part A: Interactive E-Commerce Fee & ROAS Calculator (5 cols) -->
+        <div class="lg:col-span-5 bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-5">
+          <h2 class="text-lg font-bold text-white">1. Unit Economics & Platform Fee Calculator</h2>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="text-xs text-slate-400 block mb-1">Retail Selling Price ($)</label>
+              <input id="sp-price" type="number" value="68" min="5" step="1" oninput="recalcSellerPulse()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-bold" />
+            </div>
+            <div>
+              <label class="text-xs text-slate-400 block mb-1">Landed Supplier Cost ($)</label>
+              <input id="sp-cogs" type="number" value="18.50" min="1" step="0.5" oninput="recalcSellerPulse()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-bold" />
+            </div>
+            <div>
+              <label class="text-xs text-slate-400 block mb-1">Ad Cost Per Sale / CPA ($)</label>
+              <input id="sp-cpa" type="number" value="19" min="0" step="1" oninput="recalcSellerPulse()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-bold" />
+            </div>
+            <div>
+              <label class="text-xs text-slate-400 block mb-1">Monthly Order Volume</label>
+              <input id="sp-orders" type="number" value="250" min="1" step="10" oninput="recalcSellerPulse()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-bold" />
+            </div>
+          </div>
+
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 flex items-center justify-between">
+            <div>
+              <div class="text-xs text-slate-400">Break-Even ROAS Required</div>
+              <div id="sp-breakeven-roas" class="text-xl font-black text-amber-400">1.38x</div>
+            </div>
+            <div class="text-right">
+              <div class="text-xs text-slate-400">Gross Monthly Revenue</div>
+              <div id="sp-gross-rev" class="text-xl font-black text-white">$17,000</div>
+            </div>
+          </div>
+
+          <div id="platform-comparison-list" class="space-y-3"></div>
+        </div>
+
+        <!-- Part B: AI Store Spy & 1-Click Shopify Listing Generator (7 cols) -->
+        <div class="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <div>
+                <span class="text-xs font-bold uppercase px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                  Micro-SaaS Core Tool ($29/mo Standalone Value)
+                </span>
+                <h2 class="text-lg font-bold text-white mt-1">2. Live AI Store Spy & Shopify Listing Generator</h2>
+              </div>
+            </div>
+            <p class="text-xs text-slate-400 mb-4">
+              Enter any Shopify store domain (e.g., <code>gymshark.com</code>, <code>allbirds.com</code>), product URL, or niche product description. We will inspect the feed, calculate optimal pricing, write SEO copy + TikTok ad hooks, and generate a ready-to-import <strong>Shopify CSV</strong>.
+            </p>
+
+            <div class="grid sm:grid-cols-12 gap-3 mb-5">
+              <div class="sm:col-span-7">
+                <label class="text-xs text-slate-400 block mb-1">Store URL, Product Link, or Product Brief</label>
+                <input id="spy-input" type="text" value="Portable Neck & Shoulder Heated Shiatsu Massager" placeholder="e.g. allbirds.com or Portable Espresso Maker" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-white" />
+              </div>
+              <div class="sm:col-span-2">
+                <label class="text-xs text-slate-400 block mb-1">Unit Cost ($)</label>
+                <input id="spy-cost" type="number" value="18.50" step="0.5" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-white font-bold" />
+              </div>
+              <div class="sm:col-span-3 flex items-end">
+                <button onclick="runStoreSpy()" id="btn-spy" class="w-full bg-indigo-500 hover:bg-indigo-400 text-white font-bold py-2.5 px-4 rounded-xl text-sm shadow-lg transition">
+                  🚀 Analyze & Generate
+                </button>
+              </div>
+            </div>
+
+            <!-- Spy Output Container -->
+            <div id="spy-result" class="space-y-4"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         TAB 3: TOKENINDEX — AI API & CLOUD GPU COST CALCULATOR
+         ===================================================================== -->
+    <section id="tab-tokenindex" class="tab-panel hidden space-y-8">
+      <div class="bg-gradient-to-r from-slate-900 via-cyan-950/30 to-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div>
+          <div class="inline-flex items-center gap-2 text-xs font-mono uppercase text-cyan-400 bg-cyan-500/10 border border-cyan-500/30 px-2.5 py-1 rounded-full mb-2">
+            Vertical #3 • Recurring Cloud/AI Partner Commissions (15%–20% Recurring)
+          </div>
+          <h1 class="text-2xl md:text-3xl font-extrabold text-white">
+            TokenIndex™ Live LLM API & Cloud GPU Workload Calculator
+          </h1>
+          <p class="text-slate-400 text-sm mt-1 max-w-3xl">
+            Simulate your app's daily prompt traffic or dedicated GPU compute hours to compare monthly costs across frontier LLM APIs and GPU clouds (RunPod, Vast.ai, Together AI, Lambda).
+          </p>
+        </div>
+        <button onclick="openProModal('TokenIndex API Price-Drop & Deprecation Watchdog')" class="text-xs font-bold bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-4 py-2.5 rounded-xl transition shrink-0">
+          🔔 Get API Price-Drop Alerts
+        </button>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-8">
+        <!-- Left Workload Sliders (4 cols) -->
+        <div class="lg:col-span-4 bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-5">
+          <h2 class="text-lg font-bold text-white">1. Configure AI Workload</h2>
+
+          <div>
+            <div class="flex justify-between text-xs mb-1">
+              <span class="text-slate-400">Daily AI Requests / Prompts:</span>
+              <strong id="ti-reqs-label" class="text-cyan-400">5,000 / day</strong>
+            </div>
+            <input id="ti-reqs" type="range" min="500" max="100000" step="500" value="5000" oninput="recalcTokenIndex()" class="w-full accent-cyan-400" />
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs mb-1">
+              <span class="text-slate-400">Avg Input Prompt (Tokens):</span>
+              <strong id="ti-in-label" class="text-white">1,200 tok</strong>
+            </div>
+            <input id="ti-in" type="range" min="200" max="10000" step="200" value="1200" oninput="recalcTokenIndex()" class="w-full accent-cyan-400" />
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs mb-1">
+              <span class="text-slate-400">Avg Output Completion (Tokens):</span>
+              <strong id="ti-out-label" class="text-white">600 tok</strong>
+            </div>
+            <input id="ti-out" type="range" min="100" max="4000" step="100" value="600" oninput="recalcTokenIndex()" class="w-full accent-cyan-400" />
+          </div>
+
+          <div class="pt-4 border-t border-slate-800">
+            <div class="flex justify-between text-xs mb-1">
+              <span class="text-slate-400">Self-Hosted Dedicated GPU Hours/Day:</span>
+              <strong id="ti-gpu-label" class="text-emerald-400">8 hrs/day</strong>
+            </div>
+            <input id="ti-gpu" type="range" min="1" max="24" step="1" value="8" oninput="recalcTokenIndex()" class="w-full accent-emerald-400" />
+          </div>
+
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2 text-xs">
+            <div class="flex justify-between">
+              <span class="text-slate-400">Monthly Input Volume:</span>
+              <strong id="ti-monthly-in" class="text-white font-mono">180.0M tok</strong>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-400">Monthly Output Volume:</span>
+              <strong id="ti-monthly-out" class="text-white font-mono">90.0M tok</strong>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-400">Monthly GPU Runtime:</span>
+              <strong id="ti-monthly-gpu" class="text-emerald-400 font-mono">240 hrs/mo</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Leaderboard (8 cols) -->
+        <div class="lg:col-span-8 bg-slate-900 border border-slate-800 rounded-2xl p-6">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+            <div>
+              <h2 class="text-lg font-bold text-white">2. Live Monthly Cost & Throughput Leaderboard</h2>
+              <p class="text-xs text-slate-400">Synced with OpenRouter API & Cloud GPU spot indexes</p>
+            </div>
+            <span class="text-xs font-mono text-cyan-400 bg-slate-950 border border-slate-800 px-2.5 py-1 rounded">
+              10%–20% Partner Compute Commissions
+            </span>
+          </div>
+
+          <div id="tokenindex-leaderboard" class="space-y-3"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         TAB 4: PROGRAMMATIC SEO FACTORY EXPLORER
+         ===================================================================== -->
+    <section id="tab-seo" class="tab-panel hidden space-y-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="text-xs font-mono uppercase text-indigo-400 mb-1">Automated Organic Traffic Engine</div>
+          <h1 class="text-2xl font-extrabold text-white">Programmatic SEO Page Factory</h1>
+          <p class="text-xs text-slate-400 mt-1">
+            Every database item automatically generates Server-Side Rendered (SSR) long-tail comparison and compatibility pages with Schema.org JSON-LD markup and pre-tagged affiliate callouts.
+          </p>
+        </div>
+        <div class="flex items-center gap-3">
+          <input id="seo-search" type="text" oninput="renderSeoExplorer()" placeholder="Filter 150+ SEO pages (e.g. refrigerator, ecoflow, shopify)..." class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white w-64" />
+          <a href="/sitemap.xml" target="_blank" class="bg-indigo-500 hover:bg-indigo-400 text-white font-bold text-xs px-4 py-2.5 rounded-xl whitespace-nowrap transition">
+            View /sitemap.xml ↗
+          </a>
+        </div>
+      </div>
+
+      <div id="seo-explorer-grid" class="grid md:grid-cols-2 gap-6"></div>
+    </section>
+
+    <!-- =====================================================================
+         TAB 5: UNIFIED COMMAND CENTER (OWNER ADMIN DASHBOARD)
+         ===================================================================== -->
+    <section id="tab-admin" class="tab-panel hidden space-y-8">
+      <div class="bg-gradient-to-r from-slate-900 via-amber-950/20 to-slate-900 border border-amber-500/30 rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="text-xs font-mono uppercase text-amber-400 mb-1">Owner Monetization & Automation Control</div>
+          <h1 class="text-2xl font-extrabold text-white">Unified Command Center</h1>
+          <p class="text-xs text-slate-400 mt-1">
+            Configure your affiliate partner tags, Stripe Pro checkout link, and Gemini API key once—every calculator and programmatic SEO page across all 3 verticals updates automatically.
+          </p>
+        </div>
+        <button onclick="saveSettings()" id="btn-save-settings" class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs px-5 py-3 rounded-xl shadow-lg transition shrink-0">
+          💾 Save All Monetization Settings
+        </button>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-8">
+        <!-- Affiliate & Stripe Configuration Form (6 cols) -->
+        <div class="lg:col-span-6 bg-slate-900 border border-slate-800 rounded-2xl p-6">
+          <h2 class="text-lg font-bold text-white mb-4">1. Affiliate Tags & SaaS Checkout Config</h2>
+          <div id="settings-form-list" class="space-y-4"></div>
+        </div>
+
+        <!-- Live Click Attribution & Automation Logs (6 cols) -->
+        <div class="lg:col-span-6 space-y-6">
+          <!-- Recent Affiliate Clicks -->
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+            <h2 class="text-lg font-bold text-white mb-1">2. Live Affiliate Click & EPC Ledger</h2>
+            <p class="text-xs text-slate-400 mb-4">Every outbound click through <code>/go/{vertical}/{slug}</code> is recorded here:</p>
+            <div id="admin-clicks-list" class="space-y-2 max-h-60 overflow-y-auto"></div>
+          </div>
+
+          <!-- Pro Watchdog Leads -->
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+            <h2 class="text-lg font-bold text-white mb-1">3. Pro Watchdog Subscribers & SaaS Leads</h2>
+            <p class="text-xs text-slate-400 mb-4">Users who subscribed to price-drop alerts or clicked through to Stripe Pro:</p>
+            <div id="admin-leads-list" class="space-y-2 max-h-48 overflow-y-auto"></div>
+          </div>
+
+          <!-- Automated Scraper Runs -->
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+            <h2 class="text-lg font-bold text-white mb-1">4. Automated Scraper & Price Sync History</h2>
+            <div id="admin-auto-logs" class="space-y-2 max-h-48 overflow-y-auto mt-3"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PRO UPGRADE / ALERT WATCHDOG MODAL -->
+  <div id="pro-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+    <div class="bg-slate-900 border border-emerald-500/40 rounded-2xl max-w-md w-full p-6 shadow-2xl">
+      <div class="flex items-center justify-between mb-3">
+        <span class="text-xs font-bold uppercase px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+          ⚡ Hybrid SaaS Tier
+        </span>
+        <button onclick="closeProModal()" class="text-slate-400 hover:text-white text-lg">✕</button>
+      </div>
+      <h3 id="pro-modal-title" class="text-xl font-extrabold text-white mb-2">Activate Pro Watchdog & Unlimited Suite</h3>
+      <p class="text-xs text-slate-300 leading-relaxed mb-4">
+        Get instant SMS/email alerts when LiFePO4 power stations drop below <strong>$0.55/Wh</strong>, unlimited <strong>SellerPulse AI Store Spy</strong> CSV exports, and real-time LLM token price-drop notifications.
+      </p>
+      <div class="space-y-3 mb-5">
+        <div>
+          <label class="text-xs text-slate-400 block mb-1">Your Email Address</label>
+          <input id="pro-email" type="email" placeholder="founder@yourdomain.com" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-white" />
+        </div>
+        <div>
+          <label class="text-xs text-slate-400 block mb-1">Custom Alert Threshold / Rule</label>
+          <input id="pro-rule" type="text" value="Notify me when 2000Wh+ LiFePO4 drops under $0.60/Wh" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-white" />
+        </div>
+      </div>
+      <div class="flex gap-3">
+        <button onclick="submitProLead()" class="flex-1 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold py-3 px-4 rounded-xl text-sm transition">
+          Activate Watchdog & Continue →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let STATE = {
+      stations: [],
+      appliances: [],
+      platforms: [],
+      ai_providers: [],
+      settings: [],
+      clicks: [],
+      leads: [],
+      automation_logs: [],
+      seo_index: { total_pages: 0, compatibility_pages: [], wattwise_vs: [], sellerpulse_vs: [], tokenindex_vs: [] },
+      selectedAppliances: {} // slug -> hours
+    };
+
+    async function loadBootstrap() {
+      const res = await fetch('/api/bootstrap');
+      const data = await res.json();
+      STATE = { ...STATE, ...data };
+
+      // Default selected appliances if empty: Refrigerator, CPAP, Starlink
+      if (Object.keys(STATE.selectedAppliances).length === 0) {
+        STATE.appliances.forEach(a => {
+          if (['full-size-refrigerator', 'cpap-machine', 'starlink-dish'].includes(a.slug)) {
+            STATE.selectedAppliances[a.slug] = a.default_hours;
+          }
+        });
+      }
+
+      document.getElementById('stat-seo-pages').textContent = data.stats.total_seo_pages;
+      document.getElementById('nav-seo-count').textContent = data.stats.total_seo_pages;
+      document.getElementById('stat-clicks').textContent = data.stats.total_clicks;
+      document.getElementById('stat-epc').textContent = '$' + data.stats.est_pipeline_epc_usd.toFixed(2);
+
+      const priceSetting = STATE.settings.find(s => s.key === 'pro_monthly_price_usd');
+      if (priceSetting) {
+        document.getElementById('header-pro-price').textContent = '$' + priceSetting.value;
+      }
+
+      renderApplianceSelector();
+      recalcWattWise();
+      recalcSellerPulse();
+      recalcTokenIndex();
+      renderSeoExplorer();
+      renderAdminPanel();
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-panel').forEach(el => el.classList.add('hidden'));
+      document.getElementById('tab-' + tabId).classList.remove('hidden');
+
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('border-emerald-400', 'text-emerald-400', 'font-bold');
+        btn.classList.add('border-transparent', 'text-slate-400');
+      });
+      const activeBtn = document.getElementById('tab-btn-' + tabId);
+      if (activeBtn) {
+        activeBtn.classList.remove('border-transparent', 'text-slate-400');
+        activeBtn.classList.add('border-emerald-400', 'text-emerald-400', 'font-bold');
+      }
+    }
+
+    // =========================================================================
+    // 1. WATTWISE LOGIC
+    // =========================================================================
+    function renderApplianceSelector() {
+      const container = document.getElementById('appliance-list');
+      container.innerHTML = STATE.appliances.map(ap => {
+        const isSelected = STATE.selectedAppliances[ap.slug] !== undefined;
+        const hrs = isSelected ? STATE.selectedAppliances[ap.slug] : ap.default_hours;
+        const effWatts = Math.round(ap.running_watts * ap.duty_cycle_pct);
+        return `
+          <div class="p-3 rounded-xl border transition ${isSelected ? 'bg-emerald-950/25 border-emerald-500/50' : 'bg-slate-950/60 border-slate-800/80 hover:border-slate-700'}">
+            <div class="flex items-center justify-between gap-2">
+              <label class="flex items-center gap-2.5 cursor-pointer flex-1">
+                <input type="checkbox" ${isSelected ? 'checked' : ''} onchange="toggleAppliance('${ap.slug}', ${ap.default_hours})" class="accent-emerald-400 w-4 h-4 rounded" />
+                <span class="text-lg">${ap.icon}</span>
+                <div>
+                  <div class="text-xs font-bold text-white">${ap.name}</div>
+                  <div class="text-[11px] text-slate-400">${ap.running_watts}W run (${effWatts}W avg @ ${Math.round(ap.duty_cycle_pct*100)}% duty) • ${ap.surge_watts}W surge</div>
+                </div>
+              </label>
+              ${isSelected ? `
+                <div class="flex items-center gap-1.5">
+                  <input type="number" value="${hrs}" min="0.5" max="24" step="0.5"
+                    onchange="updateApplianceHours('${ap.slug}', this.value)"
+                    class="w-16 bg-slate-900 border border-slate-700 rounded-lg px-2 py-1 text-xs text-emerald-300 font-bold text-center" />
+                  <span class="text-[11px] text-slate-400">h/day</span>
+                </div>
+              ` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function toggleAppliance(slug, defaultHrs) {
+      if (STATE.selectedAppliances[slug] !== undefined) {
+        delete STATE.selectedAppliances[slug];
+      } else {
+        STATE.selectedAppliances[slug] = defaultHrs;
+      }
+      renderApplianceSelector();
+      recalcWattWise();
+    }
+
+    function updateApplianceHours(slug, val) {
+      STATE.selectedAppliances[slug] = Math.max(0.25, Math.min(24, parseFloat(val) || 1));
+      recalcWattWise();
+    }
+
+    function resetWattWiseAppliances() {
+      STATE.selectedAppliances = {
+        'full-size-refrigerator': 24,
+        'cpap-machine': 8,
+        'starlink-dish': 12
+      };
+      renderApplianceSelector();
+      recalcWattWise();
+    }
+
+    function recalcWattWise() {
+      const days = parseFloat(document.getElementById('ww-days').value) || 1;
+      const sunHours = parseFloat(document.getElementById('ww-sun').value) || 4.5;
+      document.getElementById('ww-days-label').textContent = days.toFixed(1) + (days === 1 ? ' Day' : ' Days');
+      document.getElementById('ww-sun-label').textContent = sunHours.toFixed(1) + ' hrs/day';
+
+      let dailyWh = 0;
+      let continuousWatts = 0;
+      let peakSurgeWatts = 0;
+      let primaryApplianceSlug = 'full-size-refrigerator';
+
+      Object.entries(STATE.selectedAppliances).forEach(([slug, hrs], idx) => {
+        const ap = STATE.appliances.find(a => a.slug === slug);
+        if (!ap) return;
+        if (idx === 0) primaryApplianceSlug = ap.slug;
+        const avgWatts = ap.running_watts * ap.duty_cycle_pct;
+        dailyWh += avgWatts * hrs;
+        continuousWatts += ap.running_watts;
+        if (ap.surge_watts > peakSurgeWatts) peakSurgeWatts = ap.surge_watts;
+      });
+
+      const requiredWh = Math.round((dailyWh * days) / 0.85);
+      const requiredSolarW = Math.round((dailyWh / sunHours) * 1.25);
+
+      document.getElementById('ww-daily-wh').textContent = Math.round(dailyWh).toLocaleString() + ' Wh';
+      document.getElementById('ww-req-wh').textContent = requiredWh.toLocaleString() + ' Wh';
+      document.getElementById('ww-req-surge').textContent = peakSurgeWatts.toLocaleString() + ' W';
+      document.getElementById('ww-req-solar').textContent = requiredSolarW.toLocaleString() + ' W';
+
+      const container = document.getElementById('station-recommendations');
+      container.innerHTML = STATE.stations.map((st, idx) => {
+        const inverterOk = st.continuous_w >= continuousWatts && st.surge_w >= peakSurgeWatts;
+        const capacityRatio = Math.min(100, Math.round(((st.capacity_wh * 0.85) / Math.max(dailyWh, 1)) * 100));
+        const daysSupported = ((st.capacity_wh * 0.85) / Math.max(dailyWh, 1)).toFixed(1);
+
+        let badge = '';
+        if (inverterOk && st.capacity_wh >= requiredWh * 0.85) {
+          badge = `<span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">✅ Ideal Match (${daysSupported} days runtime)</span>`;
+        } else if (inverterOk) {
+          badge = `<span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">⚡ Runs Load (${daysSupported} days per charge)</span>`;
+        } else {
+          badge = `<span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30">⚠️ Inverter Under Peak Load</span>`;
+        }
+
+        return `
+          <div class="bg-slate-950 border ${idx === 0 && inverterOk ? 'border-emerald-500/50' : 'border-slate-800'} rounded-xl p-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div class="space-y-1.5 flex-1">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="text-xs font-extrabold text-indigo-400 uppercase">${st.brand}</span>
+                ${badge}
+                <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">$${st.dollar_per_wh.toFixed(2)}/Wh</span>
+              </div>
+              <div class="text-base font-extrabold text-white">${st.name}</div>
+              <div class="text-xs text-slate-400 flex flex-wrap gap-x-4 gap-y-1">
+                <span>🔋 <strong>${st.capacity_wh.toLocaleString()}Wh</strong> (${st.chemistry}, ${st.cycle_life} cycles)</span>
+                <span>⚡ <strong>${st.continuous_w}W</strong> (${st.surge_w}W surge)</span>
+                <span>☀️ <strong>${st.solar_input_w}W</strong> max solar</span>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row md:flex-col items-start sm:items-end justify-between gap-2 shrink-0 w-full md:w-auto border-t md:border-t-0 border-slate-800/80 pt-3 md:pt-0">
+              <div class="text-left md:text-right">
+                <div class="text-xl font-black text-white">
+                  $${st.live_price_usd.toLocaleString()}
+                  <span class="text-xs text-slate-500 line-through font-normal">$${st.msrp_usd.toLocaleString()}</span>
+                </div>
+                <div class="text-[11px] font-mono text-emerald-400">
+                  Your Affiliate Cut: ~$${st.est_commission_usd.toFixed(0)}/sale (${st.commission_rate_pct}%)
+                </div>
+              </div>
+              <div class="flex items-center gap-2 w-full sm:w-auto">
+                <a href="/seo/can-${st.slug}-run-${primaryApplianceSlug}" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-2 rounded-lg font-medium transition">
+                  SEO Page →
+                </a>
+                <a href="/go/wattwise/${st.slug}?source=wattwise_calculator" class="flex-1 sm:flex-initial text-center text-xs bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold px-4 py-2 rounded-lg shadow transition">
+                  Check Deal ↗
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // =========================================================================
+    // 2. SELLERPULSE LOGIC
+    // =========================================================================
+    function recalcSellerPulse() {
+      const price = parseFloat(document.getElementById('sp-price').value) || 68;
+      const cogs = parseFloat(document.getElementById('sp-cogs').value) || 18.5;
+      const cpa = parseFloat(document.getElementById('sp-cpa').value) || 19;
+      const orders = parseInt(document.getElementById('sp-orders').value) || 250;
+
+      const grossMarginBeforeAds = Math.max(price - cogs, 0.01);
+      const breakEvenRoas = (price / grossMarginBeforeAds).toFixed(2);
+      const grossRev = price * orders;
+
+      document.getElementById('sp-breakeven-roas').textContent = breakEvenRoas + 'x';
+      document.getElementById('sp-gross-rev').textContent = '$' + grossRev.toLocaleString();
+
+      const container = document.getElementById('platform-comparison-list');
+      container.innerHTML = STATE.platforms.map(p => {
+        const feePerOrder = price * ((p.transaction_fee_pct + p.processing_fee_pct) / 100.0) + p.processing_fixed_usd;
+        const netPerOrder = price - cogs - cpa - feePerOrder;
+        const monthlyNet = (netPerOrder * orders) - p.monthly_fee_usd;
+        const marginPct = ((monthlyNet / Math.max(grossRev, 1)) * 100).toFixed(1);
+
+        const commBadge = p.avg_affiliate_bounty_usd > 0
+          ? `$${p.avg_affiliate_bounty_usd} Referral Bounty`
+          : `${p.recurring_commission_pct}% Recurring Commission`;
+
+        return `
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+              <div>
+                <span class="text-xs font-bold text-indigo-400">${p.category}</span>
+                <h3 class="text-sm font-extrabold text-white">${p.name}</h3>
+              </div>
+              <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                Affiliate: ${commBadge}
+              </span>
+            </div>
+            <p class="text-xs text-slate-400 mb-3">${p.best_for}</p>
+            <div class="flex items-center justify-between pt-2 border-t border-slate-800/80">
+              <div>
+                <div class="text-[11px] text-slate-400">Est. Net Monthly Profit (${marginPct}% margin)</div>
+                <div class="text-lg font-black ${monthlyNet >= 0 ? 'text-emerald-400' : 'text-rose-400'}">
+                  $${Math.round(monthlyNet).toLocaleString()}/mo
+                </div>
+              </div>
+              <a href="/go/sellerpulse/${p.slug}?source=sellerpulse_calc" class="text-xs bg-indigo-500 hover:bg-indigo-400 text-white font-bold px-3.5 py-2 rounded-lg transition">
+                Launch / Partner Link ↗
+              </a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    let LAST_SPY_CSV = '';
+
+    async function runStoreSpy() {
+      const input = document.getElementById('spy-input').value.trim();
+      const cost = parseFloat(document.getElementById('spy-cost').value) || 18.5;
+      const btn = document.getElementById('btn-spy');
+      if (!input) return;
+
+      btn.disabled = true;
+      btn.textContent = '⏳ Analyzing...';
+
+      try {
+        const res = await fetch('/api/sellerpulse/spy', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url_or_product: input, supplier_cost: cost })
+        });
+        const data = await res.json();
+        LAST_SPY_CSV = data.shopify_csv_header + '\n' + data.shopify_csv_row;
+
+        const ue = data.unit_economics;
+        const scrapedHtml = data.scraped_competitor_products && data.scraped_competitor_products.length > 0
+          ? `<div class="bg-slate-950 border border-indigo-500/40 rounded-xl p-3.5 mb-3">
+               <div class="text-xs font-bold text-indigo-400 mb-2">🔍 Live Products Extracted from Store Feed:</div>
+               <div class="grid sm:grid-cols-2 gap-2">
+                 ${data.scraped_competitor_products.map(p => `
+                   <div class="text-xs bg-slate-900 p-2 rounded border border-slate-800 flex justify-between">
+                     <span class="truncate pr-2 text-slate-200">${p.title}</span>
+                     <strong class="text-emerald-400">$${p.price_usd}</strong>
+                   </div>
+                 `).join('')}
+               </div>
+             </div>`
+          : '';
+
+        document.getElementById('spy-result').innerHTML = `
+          ${scrapedHtml}
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-3">
+              <div>
+                <span class="text-[11px] font-mono text-emerald-400">${data.source_type} • ${data.ai_engine}</span>
+                <h3 class="text-base font-extrabold text-white mt-0.5">${data.seo_title}</h3>
+              </div>
+              <button onclick="downloadShopifyCsv('${data.handle}')" class="text-xs bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold px-3.5 py-2 rounded-lg transition">
+                ⬇️ Download Ready Shopify CSV
+              </button>
+            </div>
+
+            <!-- Unit Economics -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+              <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                <div class="text-slate-400">Target Retail</div>
+                <div class="text-sm font-black text-white">$${ue.recommended_retail_usd}</div>
+              </div>
+              <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                <div class="text-slate-400">Supplier Cost</div>
+                <div class="text-sm font-black text-slate-300">$${ue.supplier_cost_usd}</div>
+              </div>
+              <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                <div class="text-slate-400">Max Ad CPA (30%)</div>
+                <div class="text-sm font-black text-amber-400">$${ue.target_cpa_budget_usd}</div>
+              </div>
+              <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                <div class="text-slate-400">Net Profit / Sale</div>
+                <div class="text-sm font-black text-emerald-400">$${ue.net_profit_per_sale_usd} (${ue.net_margin_pct}%)</div>
+              </div>
+            </div>
+
+            <!-- Conversion Bullets -->
+            <div>
+              <div class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">High-Converting Product Bullets</div>
+              <ul class="space-y-1.5 text-xs text-slate-300">
+                ${data.conversion_bullets.map(b => `<li class="bg-slate-900/90 border border-slate-800/80 rounded-lg px-3 py-2">${b}</li>`).join('')}
+              </ul>
+            </div>
+
+            <!-- Viral Ad Hooks -->
+            <div>
+              <div class="text-xs font-bold text-indigo-400 uppercase tracking-wider mb-2">3 Ready-to-Film TikTok / Reels / Meta Ad Scripts</div>
+              <div class="grid md:grid-cols-3 gap-2.5">
+                ${data.viral_ad_hooks.map(h => `
+                  <div class="bg-slate-900 border border-slate-800 rounded-lg p-3 text-xs space-y-1.5">
+                    <div class="font-bold text-indigo-300">${h.angle}</div>
+                    <div class="text-white font-semibold">0–3s Hook: <span class="text-emerald-300">${h.hook_0_3s}</span></div>
+                    <div class="text-slate-400">${h.body}</div>
+                    <div class="text-amber-300 font-medium">CTA: ${h.cta}</div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+        `;
+      } finally {
+        btn.disabled = false;
+        btn.textContent = '🚀 Analyze & Generate';
+      }
+    }
+
+    function downloadShopifyCsv(handle) {
+      if (!LAST_SPY_CSV) return;
+      const blob = new Blob([LAST_SPY_CSV], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `shopify-import-${handle || 'product'}.csv`;
+      a.click();
+    }
+
+    // =========================================================================
+    // 3. TOKENINDEX LOGIC
+    // =========================================================================
+    function recalcTokenIndex() {
+      const reqsPerDay = parseInt(document.getElementById('ti-reqs').value) || 5000;
+      const inTok = parseInt(document.getElementById('ti-in').value) || 1200;
+      const outTok = parseInt(document.getElementById('ti-out').value) || 600;
+      const gpuHoursDay = parseInt(document.getElementById('ti-gpu').value) || 8;
+
+      document.getElementById('ti-reqs-label').textContent = reqsPerDay.toLocaleString() + ' / day';
+      document.getElementById('ti-in-label').textContent = inTok.toLocaleString() + ' tok';
+      document.getElementById('ti-out-label').textContent = outTok.toLocaleString() + ' tok';
+      document.getElementById('ti-gpu-label').textContent = gpuHoursDay + ' hrs/day';
+
+      const monthlyInM = (reqsPerDay * 30 * inTok) / 1_000_000;
+      const monthlyOutM = (reqsPerDay * 30 * outTok) / 1_000_000;
+      const monthlyGpuHrs = gpuHoursDay * 30;
+
+      document.getElementById('ti-monthly-in').textContent = monthlyInM.toFixed(1) + 'M tok';
+      document.getElementById('ti-monthly-out').textContent = monthlyOutM.toFixed(1) + 'M tok';
+      document.getElementById('ti-monthly-gpu').textContent = monthlyGpuHrs + ' hrs/mo';
+
+      const scored = STATE.ai_providers.map(p => {
+        const monthlyCost = p.resource_type === 'LLM API'
+          ? (monthlyInM * p.input_cost_per_m) + (monthlyOutM * p.output_cost_per_m)
+          : (monthlyGpuHrs * p.hourly_gpu_cost);
+        return { ...p, monthlyCost };
+      }).sort((a, b) => a.monthlyCost - b.monthlyCost);
+
+      document.getElementById('tokenindex-leaderboard').innerHTML = scored.map((p, idx) => `
+        <div class="bg-slate-950 border ${idx === 0 ? 'border-cyan-500/50' : 'border-slate-800'} rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="text-xs font-bold uppercase text-cyan-400">${p.provider}</span>
+              <span class="text-[11px] px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">${p.resource_type}</span>
+              <span class="text-[11px] font-mono text-emerald-400">Partner Cut: ${p.affiliate_commission_pct}% recurring (~$${p.avg_bounty_usd} LTV)</span>
+            </div>
+            <div class="text-base font-extrabold text-white mt-1">${p.name}</div>
+            <div class="text-xs text-slate-400 mt-1">
+              ${p.resource_type === 'LLM API'
+                ? `Input: <strong>$${p.input_cost_per_m.toFixed(2)}/1M</strong> • Output: <strong>$${p.output_cost_per_m.toFixed(2)}/1M</strong> • Context: <strong>${(p.context_window/1000)}k</strong> • Speed: <strong>${p.speed_tok_sec} tok/s</strong>`
+                : `Dedicated GPU Rate: <strong>$${p.hourly_gpu_cost.toFixed(2)}/hr</strong> • VRAM: <strong>${p.vram_gb}GB</strong>`
+              }
+            </div>
+          </div>
+
+          <div class="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto gap-2 border-t sm:border-t-0 border-slate-800 pt-2 sm:pt-0">
+            <div class="text-left sm:text-right">
+              <div class="text-[11px] text-slate-400">Est. Monthly Spend</div>
+              <div class="text-xl font-black text-white">$${p.monthlyCost.toFixed(2)}<span class="text-xs font-normal text-slate-400">/mo</span></div>
+            </div>
+            <a href="/go/tokenindex/${p.slug}?source=tokenindex_calc" class="text-xs bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-extrabold px-4 py-2 rounded-lg transition">
+              Deploy / Claim Credits ↗
+            </a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // =========================================================================
+    // 4. PROGRAMMATIC SEO EXPLORER
+    // =========================================================================
+    function renderSeoExplorer() {
+      const q = (document.getElementById('seo-search')?.value || '').toLowerCase();
+      const idx = STATE.seo_index;
+      const groups = [
+        { title: '⚡ Appliance Runtime & Compatibility Pages (96 URLs)', items: idx.compatibility_pages },
+        { title: '🔋 Power Station $/Wh Head-to-Head Pages (28 URLs)', items: idx.wattwise_vs },
+        { title: '🛍️ E-Commerce Platform Fee Versus Pages (15 URLs)', items: idx.sellerpulse_vs },
+        { title: '🧠 LLM API & Cloud GPU Benchmark Versus Pages (16 URLs)', items: idx.tokenindex_vs },
+      ];
+
+      document.getElementById('seo-explorer-grid').innerHTML = groups.map(g => {
+        const filtered = g.items.filter(item =>
+          !q || item.title.toLowerCase().includes(q) || item.subtitle.toLowerCase().includes(q)
+        );
+        return `
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="text-sm font-bold text-white">${g.title}</h3>
+              <span class="text-xs font-mono text-indigo-400">${filtered.length} matches</span>
+            </div>
+            <div class="space-y-2 max-h-80 overflow-y-auto pr-1">
+              ${filtered.slice(0, 40).map(item => `
+                <a href="${item.url}" class="block bg-slate-950 hover:bg-slate-900/90 border border-slate-800/80 hover:border-indigo-500/40 rounded-xl p-3 transition">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-bold text-white">${item.title}</span>
+                    <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-900 text-emerald-400 shrink-0">${item.badge}</span>
+                  </div>
+                  <div class="text-[11px] text-slate-400 mt-1">${item.subtitle}</div>
+                </a>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // =========================================================================
+    // 5. UNIFIED COMMAND CENTER (ADMIN)
+    // =========================================================================
+    const PARTNER_SIGNUP_LINKS = {
+      amazon_associate_tag: { label: 'Sign up at Amazon Associates ↗', url: 'https://affiliate-program.amazon.com/' },
+      impact_partner_id: { label: 'Sign up at Impact.com (EcoFlow/Anker) ↗', url: 'https://impact.com/partners/' },
+      shopify_affiliate_id: { label: 'Join Shopify Partners ($150/referral) ↗', url: 'https://www.shopify.com/affiliates' },
+      spocket_affiliate_id: { label: 'Join Spocket PartnerStack (30% recurring) ↗', url: 'https://www.spocket.co/affiliates' },
+      cloud_gpu_affiliate_id: { label: 'Join RunPod Referral Program ↗', url: 'https://docs.runpod.io/overview/referral-program' },
+      stripe_pro_checkout_url: { label: 'Create Stripe Payment Link ↗', url: 'https://dashboard.stripe.com/payment-links' },
+      gemini_api_key: { label: 'Get Free Gemini API Key (Google AI Studio) ↗', url: 'https://aistudio.google.com/apikey' }
+    };
+
+    function renderAdminPanel() {
+      document.getElementById('settings-form-list').innerHTML = STATE.settings.map(s => {
+        const helper = PARTNER_SIGNUP_LINKS[s.key];
+        const isPreviewToggle = s.key === 'redirect_preview_mode';
+        const isPreviewOn = s.value.toLowerCase() === 'true';
+
+        return `
+        <div class="bg-slate-950 border border-slate-800 rounded-xl p-3.5">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+            <label class="text-xs font-bold text-white">${s.label}</label>
+            <div class="flex items-center gap-2">
+              ${helper ? `<a href="${helper.url}" target="_blank" rel="noopener" class="text-[11px] font-semibold text-indigo-400 hover:text-indigo-300 underline">${helper.label}</a>` : ''}
+              <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-slate-900 text-amber-400">${s.category}</span>
+            </div>
+          </div>
+          ${isPreviewToggle ? `
+            <div class="flex items-center justify-between bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 mb-1">
+              <input data-setting-key="${s.key}" id="input-preview-mode" type="hidden" value="${s.value}" />
+              <span class="text-xs font-mono ${isPreviewOn ? 'text-amber-300' : 'text-emerald-400 font-bold'}">
+                ${isPreviewOn ? '🟡 PREVIEW MODE (Shows attribution screen before redirecting)' : '🟢 LIVE 302 REDIRECT MODE (Sends buyers straight to merchant)'}
+              </span>
+              <button type="button" onclick="togglePreviewModeQuick('${ isPreviewOn ? 'false' : 'true' }')" class="text-xs font-bold px-3 py-1 rounded-lg ${isPreviewOn ? 'bg-emerald-500 text-slate-950 hover:bg-emerald-400' : 'bg-slate-800 text-slate-200 hover:bg-slate-700'} transition">
+                ${isPreviewOn ? 'Go Live (Set false) →' : 'Switch to Preview'}
+              </button>
+            </div>
+          ` : `
+            <input data-setting-key="${s.key}" type="text" value="${s.value}" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-emerald-300 font-mono mb-1" />
+          `}
+          <div class="text-[11px] text-slate-400">${s.description}</div>
+        </div>
+      `}).join('');
+
+      const clicksContainer = document.getElementById('admin-clicks-list');
+      if (STATE.clicks.length === 0) {
+        clicksContainer.innerHTML = `<div class="text-xs text-slate-500 italic p-3 bg-slate-950 rounded-xl border border-slate-800">No affiliate clicks recorded yet. Click any green/indigo "Check Deal" button to test attribution!</div>`;
+      } else {
+        clicksContainer.innerHTML = STATE.clicks.map(c => `
+          <div class="bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-xs flex items-center justify-between">
+            <div>
+              <span class="font-mono uppercase text-[10px] text-indigo-400 mr-1.5">[${c.vertical}]</span>
+              <strong class="text-white">${c.item_name}</strong>
+              <span class="text-slate-500 ml-1">(${c.source_page})</span>
+            </div>
+            <div class="text-right">
+              <span class="text-emerald-400 font-mono font-bold">+$${c.est_epc_usd.toFixed(2)} EPC</span>
+              <div class="text-[10px] text-slate-500">${c.created_at}</div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      const leadsContainer = document.getElementById('admin-leads-list');
+      if (STATE.leads.length === 0) {
+        leadsContainer.innerHTML = `<div class="text-xs text-slate-500 italic p-3 bg-slate-950 rounded-xl border border-slate-800">No Pro Watchdog leads yet. Click "Upgrade Pro" or "Set $/Wh Price Drop Alert" to test!</div>`;
+      } else {
+        leadsContainer.innerHTML = STATE.leads.map(l => `
+          <div class="bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-xs flex items-center justify-between">
+            <div>
+              <strong class="text-emerald-300">${l.email}</strong>
+              <div class="text-[11px] text-slate-400">${l.alert_rule}</div>
+            </div>
+            <span class="text-[10px] font-mono bg-emerald-500/15 text-emerald-400 px-2 py-0.5 rounded">${l.tier}</span>
+          </div>
+        `).join('');
+      }
+
+      const autoContainer = document.getElementById('admin-auto-logs');
+      if (STATE.automation_logs.length === 0) {
+        autoContainer.innerHTML = `<div class="text-xs text-slate-500 italic p-3 bg-slate-950 rounded-xl border border-slate-800">Click "Sync Live Prices" in the top bar to run the multi-vertical scraper!</div>`;
+      } else {
+        autoContainer.innerHTML = STATE.automation_logs.map(a => `
+          <div class="bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-xs">
+            <div class="flex justify-between">
+              <strong class="text-white">${a.job_name} (${a.items_updated} items)</strong>
+              <span class="text-emerald-400 font-mono text-[10px]">${a.ran_at}</span>
+            </div>
+            <div class="text-[11px] text-slate-400 mt-0.5">${a.details}</div>
+          </div>
+        `).join('');
+      }
+    }
+
+    async function togglePreviewModeQuick(newVal) {
+      const inp = document.getElementById('input-preview-mode');
+      if (inp) inp.value = newVal;
+      await saveSettings();
+    }
+
+    async function saveSettings() {
+      const inputs = document.querySelectorAll('[data-setting-key]');
+      const updates = {};
+      inputs.forEach(inp => {
+        updates[inp.getAttribute('data-setting-key')] = inp.value;
+      });
+      const btn = document.getElementById('btn-save-settings');
+      btn.textContent = '⏳ Saving...';
+      await fetch('/api/settings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ updates })
+      });
+      await loadBootstrap();
+      btn.textContent = '✅ Saved All Monetization Settings!';
+      setTimeout(() => { btn.textContent = '💾 Save All Monetization Settings'; }, 2000);
+    }
+
+    async function triggerPriceSync() {
+      const txt = document.getElementById('btn-sync-text');
+      txt.textContent = 'Syncing Live APIs...';
+      await fetch('/api/automation/sync', { method: 'POST' });
+      await loadBootstrap();
+      txt.textContent = '✅ Prices Synced!';
+      setTimeout(() => { txt.textContent = 'Sync Live Prices'; }, 2500);
+    }
+
+    // Pro Modal
+    let CURRENT_PRO_VERTICAL = 'wattwise';
+    function openProModal(title) {
+      document.getElementById('pro-modal-title').textContent = title;
+      const modal = document.getElementById('pro-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+    function closeProModal() {
+      const modal = document.getElementById('pro-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+    async function submitProLead() {
+      const email = document.getElementById('pro-email').value.trim() || 'demo-buyer@example.com';
+      const rule = document.getElementById('pro-rule').value.trim();
+      const res = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, vertical: CURRENT_PRO_VERTICAL, alert_rule: rule })
+      });
+      const data = await res.json();
+      closeProModal();
+      await loadBootstrap();
+      if (data.stripe_checkout_url && !data.stripe_checkout_url.includes('test_pro_tier')) {
+        const sep = data.stripe_checkout_url.includes('?') ? '&' : '?';
+        window.open(`${data.stripe_checkout_url}${sep}prefilled_email=${encodeURIComponent(email)}`, '_blank');
+      } else {
+        switchTab('admin');
+      }
+    }
+
+    // Initialize on load and run initial Store Spy demo
+    window.addEventListener('DOMContentLoaded', async () => {
+      await loadBootstrap();
+      runStoreSpy();
+    });
+  </script>
+</body>
+</html>
