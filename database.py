@@ -154,7 +154,7 @@ def init_db() -> None:
             ("shopify_affiliate_id", "sellerpulse-partner", "Shopify Partner Ref ID", "Affiliate IDs", "Used for Shopify trial referrals ($50-$150 bounty per store)"),
             ("spocket_affiliate_id", "sellerpulse-spocket", "Spocket / Printful Ref ID", "Affiliate IDs", "20-30% recurring affiliate commission on e-commerce supplier tools"),
             ("cloud_gpu_affiliate_id", "sk1me166", "RunPod / Vast.ai / ElevenLabs Ref", "Affiliate IDs", "10-25% recurring commission on GPU compute and AI API credits"),
-            ("stripe_pro_checkout_url", "https://buy.stripe.com/test_3cIcN59OKdQa1WbfxSbV600", "Stripe Pro Checkout URL ($15/mo)", "SaaS Monetization", "Payment link for Pro Watchdog Alerts, BOM PDF Exports & Unlimited AI Store Spy"),
+            ("stripe_pro_checkout_url", "https://buy.stripe.com/3cIcN59OKdQa1WbfxSbV600", "Stripe Pro Checkout URL ($15/mo)", "SaaS Monetization", "Payment link for Pro Watchdog Alerts, BOM PDF Exports & Unlimited AI Store Spy"),
             ("pro_monthly_price_usd", "15", "Pro SaaS Monthly Price ($)", "SaaS Monetization", "Displayed price for the Pro subscription upgrade across all 3 verticals"),
             ("redirect_preview_mode", "false", "Affiliate Link Preview Mode", "System", "When 'true', clicking affiliate links opens an attribution verifier with a 1-click jump to the live merchant URL"),
             ("gemini_api_key", "", "Gemini API Key (Optional)", "System", "Used by SellerPulse AI Store Spy & Listing Generator (falls back to built-in deterministic copy engine if blank)")
