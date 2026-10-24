@@ -229,6 +229,15 @@ async def seo_versus_page(vertical: str, slug_pair: str, request: Request):
     return templates.TemplateResponse(request=request, name="seo_page.html", context={"seo": data})
 
 
+@app.get("/google2883eb2e672d8d5d.html")
+async def google_site_verification():
+    # Google Search Console ownership verification file
+    return Response(
+        content="google-site-verification: google2883eb2e672d8d5d.html",
+        media_type="text/html",
+    )
+
+
 @app.get("/sitemap.xml")
 async def sitemap_xml(request: Request):
     base = str(request.base_url).rstrip("/")
